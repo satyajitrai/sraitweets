@@ -92,7 +92,11 @@ static NSString * const TweetCellName = @"TweetCell";
     self.prototypeCell.tweet = self.tweets[indexPath.row];
     [self.prototypeCell layoutIfNeeded];
     CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    return size.height;
+    return size.height + 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 130;
 }
 
 - (void) fetchTweets {

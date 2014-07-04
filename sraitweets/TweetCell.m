@@ -66,6 +66,8 @@
         self.retweetContainerHeight.constant = 8;
     }
     
+    [self layoutIfNeeded]; // see http://stackoverflow.com/questions/19395766/where-to-update-auto-layout-constant
+    
     [self updateRetweets];
     [self updateFavourites];
 }

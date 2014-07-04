@@ -20,6 +20,14 @@
 @property (weak, nonatomic) IBOutlet UIImageView *retweetImage;
 @property (weak, nonatomic) IBOutlet UILabel *retweetLabel;
 @property (weak, nonatomic) IBOutlet UIView *retweetContainer;
+@property (weak, nonatomic) IBOutlet UILabel *retweetCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *favoriteCountLabel;
+@property (weak, nonatomic) IBOutlet UIButton *retweetButton;
+@property (weak, nonatomic) IBOutlet UIButton *favoriteButton;
+
+- (IBAction)onRetweet:(UIButton *)sender;
+- (IBAction)onFavorite:(UIButton *)sender;
+
 @end
 
 
@@ -35,6 +43,7 @@
 }
 
 - (void) setTweet:(Tweet *)tweet {
+    _tweet = tweet;
     self.nameLabel.text = tweet.name;
     self.usernameLabel.text = [NSString stringWithFormat:@"@%@", tweet.screenName];
     self.msgLable.text = tweet.text;
@@ -56,6 +65,42 @@
         self.retweetContainer.hidden = true;
         self.retweetContainerHeight.constant = 8;
     }
+    
+    [self updateRetweets];
+    [self updateFavourites];
 }
 
+- (void) updateRetweets {
+    if (self.tweet.retweetCount.intValue > 0) {
+        [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet_on"] forState:UIControlStateNormal];
+        self.retweetCountLabel.text = self.tweet.retweetCount.stringValue;
+    }
+    else {
+        [self.retweetButton setBackgroundImage:[UIImage imageNamed:@"retweet"] forState:UIControlStateNormal];
+        self.retweetCountLabel.text = @"";
+    }
+}
+
+- (void) updateFavourites {
+    if (self.tweet.favoriteCount.intValue > 0) {
+        [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favorite_on"] forState:UIControlStateNormal];
+        self.favoriteCountLabel.text = self.tweet.favoriteCount.stringValue;
+    }
+    else {
+        [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favorite"] forState:UIControlStateNormal];
+        self.favoriteCountLabel.text =  @"";
+    }
+}
+
+- (IBAction)onRetweet:(UIButton *)sender {
+    self.tweet.retweetCount = @(self.tweet.retweetCount.intValue + 1);
+    sender.enabled = NO;
+    [self updateRetweets];
+}
+
+- (IBAction)onFavorite:(UIButton *)sender {
+    self.tweet.favoriteCount = @(self.tweet.favoriteCount.intValue + 1);
+    sender.enabled = NO;
+    [self updateFavourites];
+}
 @end

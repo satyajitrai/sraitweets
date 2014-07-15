@@ -26,11 +26,11 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="224"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oqa-QG-Ws1">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oqa-QG-Ws1">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="182"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a4D-CV-c86">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a4D-CV-c86">
                             <rect key="frame" x="125" y="61" width="70" height="60"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <constraints>
@@ -39,7 +39,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xUA-E8-g7R">
-                            <rect key="frame" x="137" y="122" width="47" height="21"/>
+                            <rect key="frame" x="137" y="124" width="47" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <nil key="highlightedColor"/>
@@ -139,7 +139,7 @@
                         <constraint firstAttribute="bottom" secondItem="cEC-eu-ZpS" secondAttribute="bottom" constant="1" id="emO-d8-DTz"/>
                         <constraint firstItem="xUA-E8-g7R" firstAttribute="centerX" secondItem="uPS-F1-piQ" secondAttribute="centerX" id="lqc-Q7-Vn6"/>
                         <constraint firstAttribute="trailing" secondItem="a8U-c8-ZEQ" secondAttribute="trailing" constant="1" id="nYc-L8-Unr"/>
-                        <constraint firstItem="xUA-E8-g7R" firstAttribute="top" secondItem="a4D-CV-c86" secondAttribute="bottom" constant="1" id="rLS-lC-2OH"/>
+                        <constraint firstItem="xUA-E8-g7R" firstAttribute="top" secondItem="a4D-CV-c86" secondAttribute="bottom" constant="3" id="rLS-lC-2OH"/>
                         <constraint firstItem="xUA-E8-g7R" firstAttribute="centerX" secondItem="a4D-CV-c86" secondAttribute="centerX" id="tMS-No-KQT"/>
                         <constraint firstItem="cEC-eu-ZpS" firstAttribute="leading" secondItem="Fyw-Em-Bw0" secondAttribute="trailing" constant="1" id="yBn-fZ-iOW"/>
                         <constraint firstItem="Oqa-QG-Ws1" firstAttribute="leading" secondItem="Nau-Xr-ZSD" secondAttribute="leading" id="yl0-g1-g6m"/>

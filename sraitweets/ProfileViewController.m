@@ -75,6 +75,13 @@
         self.navigationItem.prompt = @"Failed to load profile image";
         NSLog(@"Failed to get profile view");
     }];
+    
+    [self.profileBackgroundImage setImageWithURLRequest:[NSURLRequest requestWithURL: userInfo.profileBackgroundURL] placeholderImage:[UIImage imageNamed:@"placeholder"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        self.profileBackgroundImage.image = image;
+    } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
+        self.navigationItem.prompt = @"Failed to load profile image";
+        NSLog(@"Failed to get profile view");
+    }];
 }
 
 - (IBAction)onTableDrag:(UIPanGestureRecognizer *)panGestureRecognizer {

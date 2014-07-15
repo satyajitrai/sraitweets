@@ -15,12 +15,10 @@
         _name = response[@"name"];
         _screenName = response[@"screen_name"];
         _profileURL = [NSURL URLWithString:response[@"profile_image_url"]];
+        _profileBackgroundURL = [NSURL URLWithString:response[@"profile_background_image_url"]];
 //        NSLog(@"%@", response[@"profile_background_image_url"]);
 //        NSLog(@"%@", response[@"profile_background_color"]);
 //        NSLog(@"%@", response[@"profile_use_background_image"]);
-//        NSLog(@"Tweets: %@", response[@"statuses_count"]);
-//        NSLog(@"Followers: %@", response[@"followers_count"]);
-//        NSLog(@"Following: %@", response[@"friends_count"]);
         _following = response[@"friends_count"];
         _followers = response[@"followers_count"];
         _tweets = response[@"statuses_count"];

@@ -13,6 +13,7 @@
 @property (strong, nonatomic, readonly) NSString *name;
 @property (strong, nonatomic, readonly) NSString *screenName;
 @property (strong, nonatomic, readonly) NSURL *profileURL;
+@property (strong, nonatomic, readonly) NSURL *profileBackgroundURL;
 @property (strong, nonatomic) NSNumber *following;
 @property (strong, nonatomic) NSNumber *followers;
 @property (strong, nonatomic) NSNumber *tweets;

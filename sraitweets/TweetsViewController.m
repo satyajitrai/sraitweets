@@ -48,7 +48,13 @@ static NSString * const TweetCellName = @"TweetCell";
     self.tableView.rowHeight = 140;
     self.navigationItem.title = @"Home";
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Sign Out" style:UIBarButtonItemStylePlain target:self action:@selector(onSignOut)];
+    UIButton * btn = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 20, 20)];
+    //[btn addTarget:self action:@selector(onMenu) forControlEvents:UIControlEventTouchUpInside];
+    [btn setBackgroundImage:[UIImage imageNamed:@"hamburger"] forState:UIControlStateNormal];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: btn];
+    self.hamburgerMenu.menuButton = btn;
+    
+    self.navigationItem.leftBarButtonItem.width = 20;
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"New" style:UIBarButtonItemStylePlain target:self action:@selector(onNewButton)];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];

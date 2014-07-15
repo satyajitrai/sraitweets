@@ -13,6 +13,12 @@
 		3439210F1961ACC50079319F /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3439210D1961ACC50079319F /* TweetCell.m */; };
 		343921101961ACC50079319F /* TweetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3439210E1961ACC50079319F /* TweetCell.xib */; };
 		343921131961B65D0079319F /* Tweet.m in Sources */ = {isa = PBXBuildFile; fileRef = 343921121961B65D0079319F /* Tweet.m */; };
+		344AD6841971A6B700BB0B97 /* HamburgerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344AD6821971A6B700BB0B97 /* HamburgerViewController.m */; };
+		344AD6851971A6B700BB0B97 /* HamburgerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344AD6831971A6B700BB0B97 /* HamburgerViewController.xib */; };
+		344AD68A1972F5CB00BB0B97 /* LeftMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344AD6881972F5CB00BB0B97 /* LeftMenuViewController.m */; };
+		344AD68B1972F5CB00BB0B97 /* LeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344AD6891972F5CB00BB0B97 /* LeftMenuViewController.xib */; };
+		344AD68F1973179700BB0B97 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344AD68D1973179700BB0B97 /* ProfileViewController.m */; };
+		344AD6901973179700BB0B97 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344AD68E1973179700BB0B97 /* ProfileViewController.xib */; };
 		34839B01195F731C00834DBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34839B00195F731C00834DBB /* Foundation.framework */; };
 		34839B03195F731C00834DBB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34839B02195F731C00834DBB /* CoreGraphics.framework */; };
 		34839B05195F731C00834DBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34839B04195F731C00834DBB /* UIKit.framework */; };
@@ -57,6 +63,16 @@
 		3439210E1961ACC50079319F /* TweetCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetCell.xib; sourceTree = "<group>"; };
 		343921111961B65D0079319F /* Tweet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tweet.h; sourceTree = "<group>"; };
 		343921121961B65D0079319F /* Tweet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tweet.m; sourceTree = "<group>"; };
+		344AD6811971A6B700BB0B97 /* HamburgerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HamburgerViewController.h; sourceTree = "<group>"; };
+		344AD6821971A6B700BB0B97 /* HamburgerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HamburgerViewController.m; sourceTree = "<group>"; };
+		344AD6831971A6B700BB0B97 /* HamburgerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HamburgerViewController.xib; sourceTree = "<group>"; };
+		344AD6861971CC1700BB0B97 /* MenuButtonProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuButtonProtocol.h; sourceTree = "<group>"; };
+		344AD6871972F5CB00BB0B97 /* LeftMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftMenuViewController.h; sourceTree = "<group>"; };
+		344AD6881972F5CB00BB0B97 /* LeftMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftMenuViewController.m; sourceTree = "<group>"; };
+		344AD6891972F5CB00BB0B97 /* LeftMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LeftMenuViewController.xib; sourceTree = "<group>"; };
+		344AD68C1973179700BB0B97 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		344AD68D1973179700BB0B97 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		344AD68E1973179700BB0B97 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		34839AFD195F731C00834DBB /* sraitweets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sraitweets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34839B00195F731C00834DBB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		34839B02195F731C00834DBB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -177,6 +193,16 @@
 				3499C2ED1965DD0000048FBA /* ComposeViewController.h */,
 				3499C2EE1965DD0000048FBA /* ComposeViewController.m */,
 				3499C2EF1965DD0000048FBA /* ComposeViewController.xib */,
+				344AD6811971A6B700BB0B97 /* HamburgerViewController.h */,
+				344AD6821971A6B700BB0B97 /* HamburgerViewController.m */,
+				344AD6831971A6B700BB0B97 /* HamburgerViewController.xib */,
+				344AD6861971CC1700BB0B97 /* MenuButtonProtocol.h */,
+				344AD6871972F5CB00BB0B97 /* LeftMenuViewController.h */,
+				344AD6881972F5CB00BB0B97 /* LeftMenuViewController.m */,
+				344AD6891972F5CB00BB0B97 /* LeftMenuViewController.xib */,
+				344AD68C1973179700BB0B97 /* ProfileViewController.h */,
+				344AD68D1973179700BB0B97 /* ProfileViewController.m */,
+				344AD68E1973179700BB0B97 /* ProfileViewController.xib */,
 			);
 			path = sraitweets;
 			sourceTree = "<group>";
@@ -299,12 +325,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				3439210B1961AB5C0079319F /* TweetsViewController.xib in Resources */,
+				344AD6851971A6B700BB0B97 /* HamburgerViewController.xib in Resources */,
 				343921101961ACC50079319F /* TweetCell.xib in Resources */,
 				34839B0B195F731C00834DBB /* InfoPlist.strings in Resources */,
 				34839B37195F7FFD00834DBB /* MainViewController.xib in Resources */,
+				344AD6901973179700BB0B97 /* ProfileViewController.xib in Resources */,
 				3499C2F11965DD0000048FBA /* ComposeViewController.xib in Resources */,
 				34839B13195F731C00834DBB /* Images.xcassets in Resources */,
 				34892F101964CE2E00F414E3 /* TweetDetailsViewController.xib in Resources */,
+				344AD68B1972F5CB00BB0B97 /* LeftMenuViewController.xib in Resources */,
 				3499C2F3196679CA00048FBA /* twitter_client.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,10 +390,13 @@
 				34839B32195F739100834DBB /* TwitterClient.m in Sources */,
 				3439210A1961AB5C0079319F /* TweetsViewController.m in Sources */,
 				343921131961B65D0079319F /* Tweet.m in Sources */,
+				344AD68F1973179700BB0B97 /* ProfileViewController.m in Sources */,
 				343702851963068900B6497B /* SignOutProtocol.m in Sources */,
 				34892F0F1964CE2E00F414E3 /* TweetDetailsViewController.m in Sources */,
+				344AD68A1972F5CB00BB0B97 /* LeftMenuViewController.m in Sources */,
 				34839B3A196078F000834DBB /* NSURL+dictionaryFromQueryString.m in Sources */,
 				34839B0D195F731C00834DBB /* main.m in Sources */,
+				344AD6841971A6B700BB0B97 /* HamburgerViewController.m in Sources */,
 				3499C2F01965DD0000048FBA /* ComposeViewController.m in Sources */,
 				34839B36195F7FFD00834DBB /* MainViewController.m in Sources */,
 				3439210F1961ACC50079319F /* TweetCell.m in Sources */,

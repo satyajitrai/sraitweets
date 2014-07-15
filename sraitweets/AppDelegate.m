@@ -11,10 +11,7 @@
 #import "TwitterClient.h"
 #import "NSURL+dictionaryFromQueryString.h"
 #include "TweetsViewController.h"
-
-@interface AppDelegate()
-@property (assign) BOOL isNavLoaded;
-@end
+#include "HamburgerViewController.h"
 
 @implementation AppDelegate
 
@@ -74,19 +71,12 @@
 
 - (void) setupRootView {
     if ([TwitterClient instance].isAuthorized) {
-        TweetsViewController *vc = [[TweetsViewController alloc] init];
-        UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
-        nc.navigationBar.tintColor = [UIColor whiteColor];
-        UIColor *twitterBlue = [UIColor colorWithRed:64/255.0f green:153/255.0f blue:255/255.0f alpha:0.0f];
-        nc.navigationBar.barTintColor = twitterBlue;
-        nc.navigationBar.translucent = NO;
-        self.window.rootViewController = nc;
-        vc.signout.delegate = self;
+        HamburgerViewController *hmenu = [[HamburgerViewController alloc] init];
+        self.window.rootViewController = hmenu;
     }
     else {
         self.window.rootViewController = [[MainViewController alloc] init];
         self.window.backgroundColor = [UIColor whiteColor];
-        self.isNavLoaded = NO;
     }
 }
 

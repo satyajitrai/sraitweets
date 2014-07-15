@@ -29,7 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[TwitterClient instance] getUserInfoWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+    [[TwitterClient instance] getUserInfoWithSuccess:^(AFHTTPRequestOperation *operation, UserProfile* responseObject) {
         [self setUpView:responseObject];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         NSLog(@"Error getting user info");
@@ -42,11 +42,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)setUpView:(NSDictionary *)userInfo {
+- (void)setUpView:(UserProfile *)userInfo {
     NSLog(@"Loading the left nav");
-    self.userNameLabel.text = userInfo[@"name"];
-    self.screenNameLabel.text = userInfo[@"screen_name"];
-    [self.profileImage setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:userInfo[@"profile_image_url"]]] placeholderImage:[UIImage imageNamed:@"placeholder"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+    self.userNameLabel.text = userInfo.name;
+    self.screenNameLabel.text = userInfo.screenName;
+    [self.profileImage setImageWithURLRequest:[NSURLRequest requestWithURL: userInfo.profileURL] placeholderImage:[UIImage imageNamed:@"placeholder"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         self.profileImage.image = image;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         self.navigationItem.prompt = @"Failed to load profile image";

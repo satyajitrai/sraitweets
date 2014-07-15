@@ -52,9 +52,11 @@ static NSString *SecretKeyName = @"secret_key";
     return [self GET:@"1.1/statuses/user_timeline.json" parameters:nil success:success failure:failure];
 }
 
-- (AFHTTPRequestOperation *)getUserInfoWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+- (AFHTTPRequestOperation *)getUserInfoWithSuccess:(void (^)(AFHTTPRequestOperation *operation, UserProfile* responseObject))success
                                             failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
-    return [self GET:@"1.1/account/verify_credentials.json" parameters:nil success:success failure:failure];
+    return [self GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success(operation, [[UserProfile alloc]initWithResponse:responseObject]);
+    } failure:failure];
 }
 
 - (AFHTTPRequestOperation *)updateStatus:(NSString*)text

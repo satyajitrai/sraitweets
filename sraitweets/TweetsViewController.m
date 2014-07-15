@@ -20,7 +20,7 @@
 @property (strong, nonatomic) NSString *myProfileImageUrl;
 @property (strong, nonatomic) NSString *myName;
 @property (strong, nonatomic) NSString *myScreenName;
-@property (strong, nonatomic) NSDictionary *userInfo;
+@property (strong, nonatomic) UserProfile *userInfo;
 @property (strong, nonatomic) TweetCell *prototypeCell;
 @end
 
@@ -117,7 +117,7 @@ static NSString * const TweetCellName = @"TweetCell";
 
 - (void) fetchUserInfo {
     if (self.userInfo == nil) {
-        [[TwitterClient instance] getUserInfoWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        [[TwitterClient instance] getUserInfoWithSuccess:^(AFHTTPRequestOperation *operation, UserProfile* responseObject) {
             self.userInfo = responseObject;
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             self.navigationItem.prompt = @"Unable to fetch user profile";

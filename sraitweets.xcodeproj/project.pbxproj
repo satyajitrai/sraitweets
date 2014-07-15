@@ -19,6 +19,7 @@
 		344AD68B1972F5CB00BB0B97 /* LeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344AD6891972F5CB00BB0B97 /* LeftMenuViewController.xib */; };
 		344AD68F1973179700BB0B97 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 344AD68D1973179700BB0B97 /* ProfileViewController.m */; };
 		344AD6901973179700BB0B97 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 344AD68E1973179700BB0B97 /* ProfileViewController.xib */; };
+		344AD6931974C68B00BB0B97 /* UserProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 344AD6921974C68B00BB0B97 /* UserProfile.m */; };
 		34839B01195F731C00834DBB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34839B00195F731C00834DBB /* Foundation.framework */; };
 		34839B03195F731C00834DBB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34839B02195F731C00834DBB /* CoreGraphics.framework */; };
 		34839B05195F731C00834DBB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 34839B04195F731C00834DBB /* UIKit.framework */; };
@@ -73,6 +74,8 @@
 		344AD68C1973179700BB0B97 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		344AD68D1973179700BB0B97 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		344AD68E1973179700BB0B97 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		344AD6911974C68B00BB0B97 /* UserProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserProfile.h; sourceTree = "<group>"; };
+		344AD6921974C68B00BB0B97 /* UserProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserProfile.m; sourceTree = "<group>"; };
 		34839AFD195F731C00834DBB /* sraitweets.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sraitweets.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34839B00195F731C00834DBB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		34839B02195F731C00834DBB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -183,8 +186,6 @@
 				3439210C1961ACC50079319F /* TweetCell.h */,
 				3439210D1961ACC50079319F /* TweetCell.m */,
 				3439210E1961ACC50079319F /* TweetCell.xib */,
-				343921111961B65D0079319F /* Tweet.h */,
-				343921121961B65D0079319F /* Tweet.m */,
 				34C207FA19623D4C00034D08 /* SignOutProtocol.h */,
 				343702841963068900B6497B /* SignOutProtocol.m */,
 				34892F0C1964CE2E00F414E3 /* TweetDetailsViewController.h */,
@@ -239,10 +240,14 @@
 		34839B2F195F737A00834DBB /* API */ = {
 			isa = PBXGroup;
 			children = (
+				343921111961B65D0079319F /* Tweet.h */,
+				343921121961B65D0079319F /* Tweet.m */,
 				34839B30195F739100834DBB /* TwitterClient.h */,
 				34839B31195F739100834DBB /* TwitterClient.m */,
 				34839B38196078F000834DBB /* NSURL+dictionaryFromQueryString.h */,
 				34839B39196078F000834DBB /* NSURL+dictionaryFromQueryString.m */,
+				344AD6911974C68B00BB0B97 /* UserProfile.h */,
+				344AD6921974C68B00BB0B97 /* UserProfile.m */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -400,6 +405,7 @@
 				3499C2F01965DD0000048FBA /* ComposeViewController.m in Sources */,
 				34839B36195F7FFD00834DBB /* MainViewController.m in Sources */,
 				3439210F1961ACC50079319F /* TweetCell.m in Sources */,
+				344AD6931974C68B00BB0B97 /* UserProfile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

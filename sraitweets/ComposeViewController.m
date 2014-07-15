@@ -50,10 +50,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)updateView:(NSDictionary*)userInfo {
-    self.nameLabel.text = userInfo[@"name"];
-    self.usernameLabel.text = userInfo[@"screen_name"];
-    [self.userImage setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:userInfo[@"profile_image_url"]]] placeholderImage:[UIImage imageNamed:@"placeholder"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+- (void)updateView:(UserProfile*)userInfo {
+    self.nameLabel.text = userInfo.name;
+    self.usernameLabel.text = userInfo.screenName;
+    [self.userImage setImageWithURLRequest:[NSURLRequest requestWithURL: userInfo.profileURL] placeholderImage:[UIImage imageNamed:@"placeholder"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
         self.userImage.image = image;
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         self.navigationItem.prompt = @"Failed to load profile image";

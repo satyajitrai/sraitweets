@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "HamburgerViewController.h"
+#import "UserProfile.h"
 
 @interface TweetsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) HamburgerViewController *hamburgerMenu;
+@property (strong, nonatomic) UserProfile *userInfo;
 @end

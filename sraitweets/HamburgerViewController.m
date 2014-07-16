@@ -9,6 +9,8 @@
 #import "HamburgerViewController.h"
 #import "TweetsViewController.h"
 #import "ProfileViewController.h"
+#import "UserProfile.h"
+#import "TwitterClient.h"
 
 enum ViewType { ViewTypeNone, ViewTypeProfile, ViewTypeTimeLine, ViewTypeMentions };
 
@@ -16,10 +18,13 @@ enum ViewType { ViewTypeNone, ViewTypeProfile, ViewTypeTimeLine, ViewTypeMention
 @property (strong, nonatomic) LeftMenuViewController *leftMenuVC;
 @property (strong, nonatomic) UINavigationController *timelineNavVC;
 @property (strong, nonatomic) UINavigationController *profileNavVC;
+@property (strong, nonatomic) TweetsViewController *tweetsVC;
+@property (strong, nonatomic) ProfileViewController *profileVC;
 @property (assign, nonatomic, getter = isOpen) BOOL open;
 @property (assign, nonatomic) enum ViewType viewType;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 @property (assign, nonatomic) CGPoint dragStartPoint;
+@property (strong, nonatomic) UserProfile *userInfo;
 @end
 
 @implementation HamburgerViewController
@@ -32,6 +37,7 @@ const int MaxMenuWidth = 210;
         [self initProfileView];
         [self initLeftNavView];
         [self initTimeLineView];
+        [self fetchUserInfo];
     }
     return self;
 }
@@ -52,6 +58,20 @@ const int MaxMenuWidth = 210;
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void) fetchUserInfo {
+    if (self.userInfo == nil) {
+        [[TwitterClient instance] getUserInfoWithSuccess:^(UserProfile* responseObject) {
+            self.userInfo = responseObject;
+            self.tweetsVC.userInfo = responseObject;
+            self.leftMenuVC.userInfo = responseObject;
+            self.profileVC.userInfo = responseObject;
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            self.navigationItem.prompt = @"Unable to fetch user profile";
+            NSLog(@"Failed to get user info");
+        }];
+    }
 }
 
 - (void)setMenuButton:(UIButton *)menuButton {
@@ -102,13 +122,13 @@ const int MaxMenuWidth = 210;
 }
 
 - (void)onTimeLineClick {
-    [self toggleMenuWithViewController:self.timelineNavVC];
     self.viewType = ViewTypeTimeLine;
+    [self toggleMenuWithViewController:self.timelineNavVC];
 }
 
 - (void)onProfileClick {
-    [self toggleMenuWithViewController:self.profileNavVC];
     self.viewType = ViewTypeProfile;
+    [self toggleMenuWithViewController:self.profileNavVC];
 }
 
 - (void)onMentionsClick {
@@ -128,19 +148,19 @@ const int MaxMenuWidth = 210;
 }
 
 - (void)initTimeLineView {
-    TweetsViewController *vc = [[TweetsViewController alloc] init];
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
+    self.tweetsVC = [[TweetsViewController alloc] init];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:self.tweetsVC];
     [nc.view addGestureRecognizer:[self panGestureRecognizer]];
-    vc.hamburgerMenu = self;
+    self.tweetsVC.hamburgerMenu = self;
     self.timelineNavVC = nc;
     self.viewType = ViewTypeTimeLine;
 }
 
 - (void)initProfileView {
-    ProfileViewController *pv = [[ProfileViewController alloc] init];
-    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:pv];
+    self.profileVC = [[ProfileViewController alloc] init];
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:self.profileVC];
     [nc.view addGestureRecognizer:[self panGestureRecognizer]];
-    pv.hamburgerMenu = self;
+    self.profileVC.hamburgerMenu = self;
     self.profileNavVC = nc;
     self.viewType = ViewTypeProfile;
 }

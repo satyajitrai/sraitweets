@@ -20,7 +20,6 @@
 @property (strong, nonatomic) NSString *myProfileImageUrl;
 @property (strong, nonatomic) NSString *myName;
 @property (strong, nonatomic) NSString *myScreenName;
-@property (strong, nonatomic) UserProfile *userInfo;
 @property (strong, nonatomic) TweetCell *prototypeCell;
 @end
 
@@ -32,7 +31,6 @@ static NSString * const TweetCellName = @"TweetCell";
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         [self fetchTweets];
-        [self fetchUserInfo];
     }
     return self;
 }
@@ -111,17 +109,6 @@ static NSString * const TweetCellName = @"TweetCell";
         self.navigationItem.prompt = @"Unable to fetch tweets";
         NSLog(@"Error getting home timeline: %@", error);
     }];
-}
-
-- (void) fetchUserInfo {
-    if (self.userInfo == nil) {
-        [[TwitterClient instance] getUserInfoWithSuccess:^(AFHTTPRequestOperation *operation, UserProfile* responseObject) {
-            self.userInfo = responseObject;
-        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            self.navigationItem.prompt = @"Unable to fetch user profile";
-            NSLog(@"Failed to get user info");
-        }];
-    }
 }
 
 - (void) onNewButton {

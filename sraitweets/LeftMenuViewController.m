@@ -29,17 +29,17 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[TwitterClient instance] getUserInfoWithSuccess:^(AFHTTPRequestOperation *operation, UserProfile* responseObject) {
-        [self setUpView:responseObject];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error getting user info");
-    }];
+    [self setUpView:self.userInfo];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(void) setUserInfo:(UserProfile *)userInfo {
+    [self setUpView: userInfo];
 }
 
 - (void)setUpView:(UserProfile *)userInfo {

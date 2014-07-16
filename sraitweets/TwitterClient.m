@@ -7,6 +7,11 @@
 //
 
 #import "TwitterClient.h"
+#import "UserProfile.h"
+
+@interface TwitterClient()
+@property (strong, nonatomic) UserProfile *profile;
+@end
 
 @implementation TwitterClient
 static NSString *PlistFileName = @"twitter_client";
@@ -33,6 +38,7 @@ static NSString *SecretKeyName = @"secret_key";
     if (self.isAuthorized) {
         return;
     }
+    
     [self.requestSerializer removeAccessToken];
     [self fetchRequestTokenWithPath:@"oauth/request_token" method:@"POST" callbackURL:[NSURL URLWithString:@"sraitweets://oauth"] scope:nil success:^(BDBOAuthToken *requestToken) {
         NSLog(@"Request token: %@", requestToken);
@@ -44,6 +50,7 @@ static NSString *SecretKeyName = @"secret_key";
 }
 
 - (void)logout {
+    self.profile = nil;
     [self.requestSerializer removeAccessToken];
 }
 
@@ -52,10 +59,21 @@ static NSString *SecretKeyName = @"secret_key";
     return [self GET:@"1.1/statuses/user_timeline.json" parameters:nil success:success failure:failure];
 }
 
-- (AFHTTPRequestOperation *)getUserInfoWithSuccess:(void (^)(AFHTTPRequestOperation *operation, UserProfile* responseObject))success
-                                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
-    return [self GET:@"1.1/account/verify_credentials.json" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
-        success(operation, [[UserProfile alloc]initWithResponse:responseObject]);
+- (void)getUserInfoWithSuccess:(void (^)(UserProfile* responseObject))success
+                       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    if (self.profile != nil) {
+        NSLog(@"Returning profile from cache");
+        success(self.profile);
+        return;
+    }
+    
+    // else
+    [self GET:@"1.1/account/verify_credentials.json"
+   parameters:nil
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          NSLog(@"Fetched user info from network");
+        self.profile = [[UserProfile alloc]initWithResponse:responseObject];
+        success(self.profile);
     } failure:failure];
 }
 

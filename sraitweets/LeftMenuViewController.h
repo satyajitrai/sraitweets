@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UserProfile.h"
 
 @interface LeftMenuViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *profileButton;
 @property (weak, nonatomic) IBOutlet UIButton *timelineButton;
 @property (weak, nonatomic) IBOutlet UIButton *mentionsButton;
 @property (weak, nonatomic) IBOutlet UIButton *logoutButton;
+@property (strong, nonatomic) UserProfile *userInfo;
 @end

@@ -11,4 +11,5 @@
 
 @interface ProfileViewController : UIViewController
 @property (weak, nonatomic) HamburgerViewController *hamburgerMenu;
+@property (strong, nonatomic) UserProfile *userInfo;
 @end

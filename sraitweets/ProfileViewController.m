@@ -49,17 +49,17 @@
     self.followersLabel.text = @"0";
     self.followingLabel.text = @"0";
     
-    [[TwitterClient instance] getUserInfoWithSuccess:^(AFHTTPRequestOperation *operation, UserProfile* responseObject) {
-        [self setUpView:responseObject];
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Error getting user info");
-    }];
+    [self setUpView:self.userInfo];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) setUserInfo:(UserProfile *)userInfo {
+    [self setUpView:userInfo];
 }
 
 - (void)setUpView:(UserProfile *)userInfo {
@@ -87,17 +87,20 @@
 - (IBAction)onTableDrag:(UIPanGestureRecognizer *)panGestureRecognizer {
     UIView * view = panGestureRecognizer.view;
     CGPoint touch = [panGestureRecognizer locationInView:view];
-    float yshift = touch.y - self.dragStartPoint.y;
     if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
         self.dragStartPoint = touch;
         self.originalImageContainerHeight = self.imageContainerHeight.constant;
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateChanged) {
-        if (yshift < 0) yshift = 0;
-        if (yshift > 90) yshift = 90;
-        self.imageContainerHeight.constant = self.imageContainerHeight.constant + yshift;
-        //self.profileBackgroundImage.alpha = yshift/90;
+        float heightChange = (self.imageContainerHeight.constant - self.originalImageContainerHeight);
+        if (heightChange < 100) {
+            float yshift = touch.y - self.dragStartPoint.y;
+            self.imageContainerHeight.constant = self.imageContainerHeight.constant + yshift;
+            self.profileBackgroundImage.alpha = 1 - heightChange/(self.originalImageContainerHeight + 50);
+//            NSLog(@"alpha = %f", self.profileBackgroundImage.alpha);
+        }
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
         [UIView animateWithDuration:1.5 animations:^{
+            self.profileBackgroundImage.alpha = 1;
             self.imageContainerHeight.constant = self.originalImageContainerHeight;
         }];
     }

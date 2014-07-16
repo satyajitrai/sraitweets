@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		340EF25C1976E02A00B75FF3 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 340EF25B1976E02A00B75FF3 /* README.md */; };
 		3439210A1961AB5C0079319F /* TweetsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 343921081961AB5C0079319F /* TweetsViewController.m */; };
 		3439210B1961AB5C0079319F /* TweetsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 343921091961AB5C0079319F /* TweetsViewController.xib */; };
 		3439210F1961ACC50079319F /* TweetCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3439210D1961ACC50079319F /* TweetCell.m */; };
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		340EF25B1976E02A00B75FF3 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		343921071961AB5C0079319F /* TweetsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TweetsViewController.h; sourceTree = "<group>"; };
 		343921081961AB5C0079319F /* TweetsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TweetsViewController.m; sourceTree = "<group>"; };
 		343921091961AB5C0079319F /* TweetsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TweetsViewController.xib; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 				344AD68C1973179700BB0B97 /* ProfileViewController.h */,
 				344AD68D1973179700BB0B97 /* ProfileViewController.m */,
 				344AD68E1973179700BB0B97 /* ProfileViewController.xib */,
+				340EF25B1976E02A00B75FF3 /* README.md */,
 			);
 			path = sraitweets;
 			sourceTree = "<group>";
@@ -330,6 +333,7 @@
 				34839B0B195F731C00834DBB /* InfoPlist.strings in Resources */,
 				34839B37195F7FFD00834DBB /* MainViewController.xib in Resources */,
 				344AD6901973179700BB0B97 /* ProfileViewController.xib in Resources */,
+				340EF25C1976E02A00B75FF3 /* README.md in Resources */,
 				3499C2F11965DD0000048FBA /* ComposeViewController.xib in Resources */,
 				34839B13195F731C00834DBB /* Images.xcassets in Resources */,
 				34892F101964CE2E00F414E3 /* TweetDetailsViewController.xib in Resources */,

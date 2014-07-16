@@ -1,10 +1,25 @@
-Twitter iOS Application
-=======================
+# Twitter iOS Application
+
+## Twitter Redux
+**Hourse Worked: 12 hours**
+
+### User Stories:
+
+   * Hamburger menu
+      * Dragging anywhere in the view should reveal the menu.
+      * The menu should include links to your profile, the home timeline, and the mentions view.
+      * The menu can look similar to the LinkedIn menu below or feel free to take liberty with the UI.
+   * Profile page
+      * Contains the user header view
+      * Optional: Pulling down the profile page should blur and resize the header image.
+      * Contains a section with the users basic stats: # tweets, # following, # followers
+
+## Twitter
 
 **Hourse Worked: 14 hours**
 
-User Stories
-------------
+### User Stories
+
   * User can sign in using OAuth login flow
   * User can view last 20 tweets from their home timeline
   * The current signed in user will be persisted across restarts
@@ -16,6 +31,6 @@ User Stories
   * Optional: After creating a new tweet, a user should be able to view it in the timeline immediately without refetching the timeline from the network.
   * Optional: Retweeting and favoriting should increment the retweet and favorite count.
 
-Demo
-----
+## Demo
+
 ![demo](demo.gif "Twitter Demo")

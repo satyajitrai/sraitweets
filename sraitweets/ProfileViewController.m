@@ -119,6 +119,7 @@ static NSString * const TweetCellName = @"HomeTweetCell";
             self.profileBackgroundImage.alpha = 1 - heightChange/(self.originalImageContainerHeight + 50);
         }
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        [self fetchUserTimeline];
         [UIView animateWithDuration:1.5 animations:^{
             self.profileBackgroundImage.alpha = 1;
             self.imageContainerHeight.constant = self.originalImageContainerHeight;
@@ -157,6 +158,10 @@ static NSString * const TweetCellName = @"HomeTweetCell";
     [self.prototypeCell layoutIfNeeded];
     CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height + 1;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {

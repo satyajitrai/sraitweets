@@ -86,7 +86,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="FOLLOWERS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuo-Kd-SZ4">
-                                    <rect key="frame" x="10" y="23" width="87" height="17"/>
+                                    <rect key="frame" x="9" y="23" width="87" height="17"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -152,12 +152,10 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
-                    <connections>
-                        <outletCollection property="gestureRecognizers" destination="ZqB-37-ttp" appends="YES" id="gYA-Nx-nJj"/>
-                    </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <gestureRecognizers/>
             <constraints>
                 <constraint firstItem="Nau-Xr-ZSD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3dE-fa-uED"/>
                 <constraint firstItem="Nau-Xr-ZSD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="45" id="DoJ-X9-AwE"/>
@@ -169,6 +167,9 @@
             </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outletCollection property="gestureRecognizers" destination="ZqB-37-ttp" appends="YES" id="9BI-Nh-0Pm"/>
+            </connections>
         </view>
         <panGestureRecognizer minimumNumberOfTouches="1" id="ZqB-37-ttp">
             <connections>

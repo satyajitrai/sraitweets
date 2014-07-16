@@ -95,6 +95,7 @@
         if (yshift < 0) yshift = 0;
         if (yshift > 90) yshift = 90;
         self.imageContainerHeight.constant = self.imageContainerHeight.constant + yshift;
+        //self.profileBackgroundImage.alpha = yshift/90;
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
         [UIView animateWithDuration:1.5 animations:^{
             self.imageContainerHeight.constant = self.originalImageContainerHeight;

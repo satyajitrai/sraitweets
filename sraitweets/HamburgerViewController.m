@@ -42,7 +42,9 @@ const int MaxMenuWidth = 210;
     [self.view addSubview:self.profileNavVC.view];
     [self.view addSubview:self.leftMenuVC.view];
     self.leftMenuVC.view.frame = CGRectMake(0, 0, MaxMenuWidth, self.contentView.frame.size.height);
+    [self addChildViewController:self.timelineNavVC];
     [self.view addSubview:self.timelineNavVC.view];
+    [self.timelineNavVC didMoveToParentViewController:self];
     [self.leftMenuVC.timelineButton addTarget:self action:@selector(onTimeLineClick) forControlEvents:UIControlEventTouchUpInside];
     [self.leftMenuVC.profileButton addTarget:self action:@selector(onProfileClick) forControlEvents:UIControlEventTouchUpInside];
 }

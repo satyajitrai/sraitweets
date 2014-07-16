@@ -23,7 +23,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nau-Xr-ZSD">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="224"/>
+                    <rect key="frame" x="0.0" y="45" width="320" height="224"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Oqa-QG-Ws1">
@@ -147,7 +147,7 @@
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="hbN-Oe-ztY">
-                    <rect key="frame" x="0.0" y="224" width="320" height="344"/>
+                    <rect key="frame" x="0.0" y="269" width="320" height="299"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <gestureRecognizers/>
@@ -159,7 +159,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="Nau-Xr-ZSD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="3dE-fa-uED"/>
-                <constraint firstItem="Nau-Xr-ZSD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="DoJ-X9-AwE"/>
+                <constraint firstItem="Nau-Xr-ZSD" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="45" id="DoJ-X9-AwE"/>
                 <constraint firstAttribute="trailing" secondItem="hbN-Oe-ztY" secondAttribute="trailing" id="Mtf-7P-ePc"/>
                 <constraint firstItem="hbN-Oe-ztY" firstAttribute="top" secondItem="Nau-Xr-ZSD" secondAttribute="bottom" id="Rn3-b0-zgo"/>
                 <constraint firstAttribute="trailing" secondItem="Nau-Xr-ZSD" secondAttribute="trailing" id="VzV-cD-Fn2"/>

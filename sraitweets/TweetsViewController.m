@@ -102,8 +102,8 @@ static NSString * const TweetCellName = @"TweetCell";
 }
 
 - (void) fetchTweets {
-    [[TwitterClient instance] homeTimelineWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        self.tweets = [Tweet tweetsFromResponse:responseObject];
+    [[TwitterClient instance] homeTimelineWithSuccess:^(NSArray *tweets) {
+        self.tweets = tweets;
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         self.navigationItem.prompt = @"Unable to fetch tweets";

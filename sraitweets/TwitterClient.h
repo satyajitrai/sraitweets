@@ -15,8 +15,11 @@
 - (void)login;
 - (void)logout;
 
-- (AFHTTPRequestOperation *)homeTimelineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+- (void)homeTimelineWithSuccess:(void (^)(NSArray *tweets))success
                                             failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+- (void)userTimelineWithSuccess:(void (^)(NSArray *tweets))success
+                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 - (void)getUserInfoWithSuccess:(void (^)(UserProfile* responseObject))success
                                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;

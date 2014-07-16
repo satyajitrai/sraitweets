@@ -13,6 +13,7 @@
                 <outlet property="profileBackgroundImage" destination="Oqa-QG-Ws1" id="yG4-aR-0Tn"/>
                 <outlet property="profileImage" destination="a4D-CV-c86" id="qvT-LC-ByS"/>
                 <outlet property="screenName" destination="uPS-F1-piQ" id="1VP-3g-zvM"/>
+                <outlet property="tableView" destination="hbN-Oe-ztY" id="c8z-1E-1yx"/>
                 <outlet property="tweetsLabel" destination="DFF-or-XJZ" id="S96-N1-PKK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

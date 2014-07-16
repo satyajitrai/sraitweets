@@ -8,6 +8,7 @@
 
 #import "TwitterClient.h"
 #import "UserProfile.h"
+#import "Tweet.h"
 
 @interface TwitterClient()
 @property (strong, nonatomic) UserProfile *profile;
@@ -54,9 +55,22 @@ static NSString *SecretKeyName = @"secret_key";
     [self.requestSerializer removeAccessToken];
 }
 
-- (AFHTTPRequestOperation *)homeTimelineWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
+- (void)homeTimelineWithSuccess:(void (^)(NSArray* tweets))success
                                             failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
-    return [self GET:@"1.1/statuses/user_timeline.json" parameters:nil success:success failure:failure];
+    [self GET:@"1.1/statuses/home_timeline.json"
+          parameters:nil
+             success:^(AFHTTPRequestOperation *operation, id responseObject) {
+                 success([Tweet tweetsFromResponse:responseObject]);
+             } failure:failure];
+}
+
+- (void)userTimelineWithSuccess:(void (^)(NSArray* tweets))success
+                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    [self GET:@"1.1/statuses/user_timeline.json"
+   parameters:nil
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          success([Tweet tweetsFromResponse:responseObject]);
+      } failure:failure];
 }
 
 - (void)getUserInfoWithSuccess:(void (^)(UserProfile* responseObject))success

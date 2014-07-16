@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "HamburgerViewController.h"
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
 @property (weak, nonatomic) HamburgerViewController *hamburgerMenu;
 @property (strong, nonatomic) UserProfile *userInfo;
 @end

@@ -9,6 +9,7 @@
 #import "ProfileViewController.h"
 #import "TwitterClient.h"
 #import <AFNetworking/UIImageView+AFNetworking.h>
+#import "TweetCell.h"
 
 @interface ProfileViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *profileBackgroundImage;
@@ -18,19 +19,27 @@
 @property (weak, nonatomic) IBOutlet UILabel *tweetsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followingLabel;
 @property (weak, nonatomic) IBOutlet UILabel *followersLabel;
+@property (strong, nonatomic) NSArray *tweets;
+
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *imageContainerHeight;
 @property (assign, nonatomic) int originalImageContainerHeight;
 @property (assign, nonatomic) CGPoint dragStartPoint;
+
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) TweetCell *prototypeCell;
+
 - (IBAction)onTableDrag:(UIPanGestureRecognizer *)sender;
 @end
 
 @implementation ProfileViewController
+static NSString * const TweetCellName = @"HomeTweetCell";
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         NSLog(@"Initializing profile view");
+        [self fetchUserTimeline];
     }
     return self;
 }
@@ -38,13 +47,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    UIButton * btn = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 20, 20)];
+
+    [self.tableView registerNib:[UINib nibWithNibName:@"TweetCell" bundle:nil] forCellReuseIdentifier:TweetCellName];
+    self.tableView.rowHeight = 140;
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
     self.navigationItem.title = @"Profile";
+    
+    UIButton * btn = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 20, 20)];
     [btn setBackgroundImage:[UIImage imageNamed:@"hamburger"] forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: btn];
     self.hamburgerMenu.menuButton = btn;
     
+    // default values
     self.tweetsLabel.text = @"0";
     self.followersLabel.text = @"0";
     self.followingLabel.text = @"0";
@@ -61,6 +76,12 @@
 - (void) setUserInfo:(UserProfile *)userInfo {
     [self setUpView:userInfo];
 }
+
+-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}
+
+#pragma mark - Image view
 
 - (void)setUpView:(UserProfile *)userInfo {
     self.name.text = userInfo.name;
@@ -96,7 +117,6 @@
             float yshift = touch.y - self.dragStartPoint.y;
             self.imageContainerHeight.constant = self.imageContainerHeight.constant + yshift;
             self.profileBackgroundImage.alpha = 1 - heightChange/(self.originalImageContainerHeight + 50);
-//            NSLog(@"alpha = %f", self.profileBackgroundImage.alpha);
         }
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
         [UIView animateWithDuration:1.5 animations:^{
@@ -105,4 +125,42 @@
         }];
     }
 }
+
+#pragma mark - Home Timeline
+- (void) fetchUserTimeline {
+    [[TwitterClient instance] userTimelineWithSuccess:^(NSArray *tweets) {
+        self.tweets = tweets;
+        [self.tableView reloadData];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        self.navigationItem.prompt = @"Unable to fetch tweets";
+        NSLog(@"Error getting home timeline: %@", error);
+    }];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.tweets.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:TweetCellName forIndexPath:indexPath];
+    cell.tweet = self.tweets[indexPath.row];
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (!self.prototypeCell)
+    {
+        self.prototypeCell = [self.tableView dequeueReusableCellWithIdentifier:TweetCellName];
+    }
+    
+    self.prototypeCell.tweet = self.tweets[indexPath.row];
+    [self.prototypeCell layoutIfNeeded];
+    CGSize size = [self.prototypeCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height + 1;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 130;
+}
+
 @end

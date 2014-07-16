@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "LeftMenuViewController.h"
 
+typedef void (^SignOutHandler)();
+
 @interface HamburgerViewController : UIViewController
 
 @property (strong, nonatomic) UIButton *menuButton;
+@property (strong, nonatomic) SignOutHandler signOutHandler;
 
 @end

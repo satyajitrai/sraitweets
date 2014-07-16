@@ -7,9 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SignOutProtocol.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, SignOutProtocolDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 

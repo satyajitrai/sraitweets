@@ -73,6 +73,9 @@
     if ([TwitterClient instance].isAuthorized) {
         HamburgerViewController *hmenu = [[HamburgerViewController alloc] init];
         self.window.rootViewController = hmenu;
+        hmenu.signOutHandler = ^ {
+            [self signOut];
+        };
     }
     else {
         self.window.rootViewController = [[MainViewController alloc] init];
@@ -80,7 +83,7 @@
     }
 }
 
-- (void) onSignOut {
+- (void) signOut {
     [[TwitterClient instance] logout];
     NSLog(@"Logged out!");
     [self setupRootView];

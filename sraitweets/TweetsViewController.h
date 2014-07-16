@@ -7,10 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SignOutProtocol.h"
 #import "HamburgerViewController.h"
 
 @interface TweetsViewController : UIViewController<UITableViewDataSource, UITableViewDelegate>
-@property (strong, nonatomic) SignOutProtocol *signout;
 @property (weak, nonatomic) HamburgerViewController *hamburgerMenu;
 @end

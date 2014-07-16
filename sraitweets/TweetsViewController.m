@@ -33,7 +33,6 @@ static NSString * const TweetCellName = @"TweetCell";
     if (self) {
         [self fetchTweets];
         [self fetchUserInfo];
-        self.signout = [[SignOutProtocol alloc] init];
     }
     return self;
 }
@@ -49,7 +48,6 @@ static NSString * const TweetCellName = @"TweetCell";
     self.navigationItem.title = @"Home";
     
     UIButton * btn = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 20, 20)];
-    //[btn addTarget:self action:@selector(onMenu) forControlEvents:UIControlEventTouchUpInside];
     [btn setBackgroundImage:[UIImage imageNamed:@"hamburger"] forState:UIControlStateNormal];
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: btn];
     self.hamburgerMenu.menuButton = btn;
@@ -126,14 +124,7 @@ static NSString * const TweetCellName = @"TweetCell";
     }
 }
 
-- (void) onSignOut {
-    NSLog(@"Calling the signout delegate");
-    [self.signout signOut];
-    NSLog(@"Signed out!");
-}
-
 - (void) onNewButton {
-    NSLog(@"Will compose a new tweet");
     ComposeViewController *cv = [[ComposeViewController alloc] init];
     cv.userInfo = self.userInfo;
     cv.newTweetHandler = ^(Tweet *tweet){

@@ -42,11 +42,11 @@ const int MaxMenuWidth = 210;
     [self.view addSubview:self.profileNavVC.view];
     [self.view addSubview:self.leftMenuVC.view];
     self.leftMenuVC.view.frame = CGRectMake(0, 0, MaxMenuWidth, self.contentView.frame.size.height);
-    [self addChildViewController:self.timelineNavVC];
     [self.view addSubview:self.timelineNavVC.view];
-    [self.timelineNavVC didMoveToParentViewController:self];
     [self.leftMenuVC.timelineButton addTarget:self action:@selector(onTimeLineClick) forControlEvents:UIControlEventTouchUpInside];
     [self.leftMenuVC.profileButton addTarget:self action:@selector(onProfileClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.leftMenuVC.mentionsButton addTarget:self action:@selector(onMentionsClick) forControlEvents:UIControlEventTouchUpInside];
+    [self.leftMenuVC.logoutButton addTarget:self action:@selector(onLogoutClick) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,7 +55,7 @@ const int MaxMenuWidth = 210;
 }
 
 - (void)setMenuButton:(UIButton *)menuButton {
-    NSLog(@"Setting menu button...");
+//    NSLog(@"Setting menu button...");
     if (menuButton) {
         _menuButton = menuButton;
         [menuButton addTarget:self action:@selector(onMenuClick) forControlEvents:UIControlEventTouchUpInside];
@@ -63,7 +63,7 @@ const int MaxMenuWidth = 210;
 }
 
 - (void)onMenuClick {
-    NSLog(@"Handling menu click - current view type is %d", self.viewType);
+//    NSLog(@"Handling menu click - current view type is %d", self.viewType);
     switch (self.viewType) {
         case ViewTypeTimeLine:
             [self toggleMenuWithViewController:self.timelineNavVC];
@@ -112,14 +112,16 @@ const int MaxMenuWidth = 210;
 }
 
 - (void)onMentionsClick {
-    NSLog(@"Clicked on mentions Button");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Not Implemented" message:@"Not yet implemented" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil];
+    [alert show];
 }
 
 - (void)onLogoutClick {
-    NSLog(@"Clicked on Logout Button");
+    if (self.signOutHandler) {
+        self.signOutHandler();
+    }
 }
 
-//TODO: Handle view lifecycle events
 - (void) initLeftNavView {
     self.leftMenuVC = [[LeftMenuViewController alloc] init];
     self.open = NO;

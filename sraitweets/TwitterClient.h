@@ -16,13 +16,18 @@
 - (void)logout;
 
 - (void)homeTimelineWithSuccess:(void (^)(NSArray *tweets))success
-                                            failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
-
-- (void)userTimelineWithSuccess:(void (^)(NSArray *tweets))success
                         failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+- (void)userTimelineForUser:(NSString*)screenName
+                    success:(void (^)(NSArray *tweets))success
+                    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+- (void)getProfile:(NSString *)screenName
+           success:(void (^)(UserProfile* responseObject))success
+           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
 - (void)getUserInfoWithSuccess:(void (^)(UserProfile* responseObject))success
-                                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+                       failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
 - (AFHTTPRequestOperation *)updateStatus:(NSString*)text
                              withSuccess:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success

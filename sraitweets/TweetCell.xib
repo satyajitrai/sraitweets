@@ -13,14 +13,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="122"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="m9w-We-uLX">
-                        <rect key="frame" x="13" y="22" width="52" height="54"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="54" id="P0a-6i-JR3"/>
-                            <constraint firstAttribute="width" constant="52" id="X6l-RS-Z8A"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Satyajit Rai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iz3-kl-UYd">
                         <rect key="frame" x="73" y="21" width="75" height="17"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -135,6 +127,21 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nrd-Rb-dJ7">
+                        <rect key="frame" x="11" y="22" width="52" height="52"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="52" id="TBn-po-NPJ"/>
+                            <constraint firstAttribute="height" constant="52" id="Tdt-WL-YXS"/>
+                        </constraints>
+                        <inset key="contentEdgeInsets" minX="1" minY="1" maxX="1" maxY="1"/>
+                        <state key="normal" backgroundImage="default_profile">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="onProfileImageClick:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WUS-kT-mwk"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="zal-Bd-HHZ" firstAttribute="leading" secondItem="Iz3-kl-UYd" secondAttribute="leading" id="02n-eh-fTZ"/>
@@ -144,22 +151,21 @@
                     <constraint firstAttribute="trailing" secondItem="mnh-Hb-szk" secondAttribute="trailing" constant="6" id="2lx-2E-zRe"/>
                     <constraint firstAttribute="trailing" secondItem="mnh-Hb-szk" secondAttribute="trailing" constant="6" id="3bM-gj-mTp"/>
                     <constraint firstItem="mnh-Hb-szk" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="HVa-tC-7pi" secondAttribute="trailing" constant="5" id="65M-js-I5f"/>
-                    <constraint firstItem="Iz3-kl-UYd" firstAttribute="leading" secondItem="m9w-We-uLX" secondAttribute="trailing" constant="8" id="6NH-WG-YCP"/>
                     <constraint firstItem="HVa-tC-7pi" firstAttribute="centerY" secondItem="Iz3-kl-UYd" secondAttribute="centerY" id="7AO-Fn-u6I"/>
-                    <constraint firstItem="zal-Bd-HHZ" firstAttribute="leading" secondItem="m9w-We-uLX" secondAttribute="trailing" constant="8" id="7vd-Hh-FJR"/>
+                    <constraint firstItem="Iz3-kl-UYd" firstAttribute="leading" secondItem="Nrd-Rb-dJ7" secondAttribute="trailing" constant="10" id="8fq-RR-E7p"/>
                     <constraint firstItem="D5j-1K-gsp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Brf-cM-Ln4"/>
+                    <constraint firstItem="Nrd-Rb-dJ7" firstAttribute="top" secondItem="D5j-1K-gsp" secondAttribute="bottom" constant="1" id="C9v-Ze-aPv"/>
                     <constraint firstItem="RVO-R7-WC4" firstAttribute="centerY" secondItem="Fs9-4Z-uIx" secondAttribute="centerY" id="CLj-0G-Wqi"/>
-                    <constraint firstItem="m9w-We-uLX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="13" id="Lai-wC-fTe"/>
                     <constraint firstAttribute="trailing" secondItem="D5j-1K-gsp" secondAttribute="trailing" constant="7" id="M7d-EX-EVo"/>
                     <constraint firstItem="Iz3-kl-UYd" firstAttribute="top" secondItem="D5j-1K-gsp" secondAttribute="bottom" id="VpO-HU-Zgl"/>
                     <constraint firstItem="HVa-tC-7pi" firstAttribute="leading" secondItem="Iz3-kl-UYd" secondAttribute="trailing" constant="3" id="X9w-d3-41P"/>
+                    <constraint firstItem="Nrd-Rb-dJ7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="11" id="YJX-OU-vgV"/>
                     <constraint firstItem="Fs7-rV-eV3" firstAttribute="leading" secondItem="zal-Bd-HHZ" secondAttribute="leading" id="bGF-j4-mBV"/>
                     <constraint firstItem="HVa-tC-7pi" firstAttribute="height" secondItem="Iz3-kl-UYd" secondAttribute="height" id="cOt-Zn-6rM"/>
                     <constraint firstItem="Fs7-rV-eV3" firstAttribute="top" secondItem="zal-Bd-HHZ" secondAttribute="bottom" constant="6" id="gLM-s8-xxn"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Fs7-rV-eV3" secondAttribute="bottom" constant="7" id="hyX-8K-x2F"/>
                     <constraint firstItem="mnh-Hb-szk" firstAttribute="centerY" secondItem="HVa-tC-7pi" secondAttribute="centerY" id="mCG-hp-AK9"/>
                     <constraint firstItem="RVO-R7-WC4" firstAttribute="centerY" secondItem="DA8-LI-gm5" secondAttribute="centerY" id="mZV-f6-b9l"/>
-                    <constraint firstItem="m9w-We-uLX" firstAttribute="top" secondItem="D5j-1K-gsp" secondAttribute="bottom" constant="1" id="oJV-oa-eLG"/>
                     <constraint firstItem="RVO-R7-WC4" firstAttribute="centerY" secondItem="Fs7-rV-eV3" secondAttribute="centerY" id="p4n-h0-pAt"/>
                     <constraint firstItem="RVO-R7-WC4" firstAttribute="centerY" secondItem="949-P6-5b6" secondAttribute="centerY" id="qt3-EC-YJO"/>
                     <constraint firstItem="Fs9-4Z-uIx" firstAttribute="leading" secondItem="RVO-R7-WC4" secondAttribute="trailing" constant="30" id="sJF-l1-n0t"/>
@@ -175,6 +181,7 @@
                 <outlet property="favoriteCountLabel" destination="DA8-LI-gm5" id="Ytc-31-HKh"/>
                 <outlet property="msgLable" destination="zal-Bd-HHZ" id="4pn-vF-77z"/>
                 <outlet property="nameLabel" destination="Iz3-kl-UYd" id="iBt-zR-swG"/>
+                <outlet property="profileImageButton" destination="Nrd-Rb-dJ7" id="X9t-bj-Ill"/>
                 <outlet property="retweetButton" destination="949-P6-5b6" id="swH-Ef-eAZ"/>
                 <outlet property="retweetContainer" destination="D5j-1K-gsp" id="ODD-jE-Jz3"/>
                 <outlet property="retweetContainerHeight" destination="dEY-Qm-yat" id="Cyk-eu-nHm"/>
@@ -182,12 +189,12 @@
                 <outlet property="retweetImage" destination="SmW-ex-0fc" id="Sr3-zk-8Ws"/>
                 <outlet property="retweetLabel" destination="Cm7-ra-h3b" id="BNK-yI-c9A"/>
                 <outlet property="timeLabel" destination="mnh-Hb-szk" id="wlN-V3-Z7v"/>
-                <outlet property="userImage" destination="m9w-We-uLX" id="lYV-Rm-hYl"/>
                 <outlet property="usernameLabel" destination="HVa-tC-7pi" id="KQz-KL-8Es"/>
             </connections>
         </tableViewCell>
     </objects>
     <resources>
+        <image name="default_profile" width="44" height="35"/>
         <image name="favorite" width="8" height="8"/>
         <image name="reply" width="8" height="8"/>
         <image name="retweet" width="8" height="8"/>

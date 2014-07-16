@@ -13,6 +13,8 @@
       * Contains the user header view
       * Optional: Pulling down the profile page should blur and resize the header image.
       * Contains a section with the users basic stats: # tweets, # following, # followers
+   * Home Timeline
+      * Tapping on a user image should bring up that user's profile page
 
 ## Twitter
 

@@ -64,10 +64,12 @@ static NSString *SecretKeyName = @"secret_key";
              } failure:failure];
 }
 
-- (void)userTimelineWithSuccess:(void (^)(NSArray* tweets))success
-                        failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+- (void)userTimelineForUser:(NSString*)screenName
+                    success:(void (^)(NSArray *tweets))success
+                    failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    NSDictionary *params = @{@"screen_name" : screenName };
     [self GET:@"1.1/statuses/user_timeline.json"
-   parameters:nil
+   parameters:params
       success:^(AFHTTPRequestOperation *operation, id responseObject) {
           success([Tweet tweetsFromResponse:responseObject]);
       } failure:failure];
@@ -89,6 +91,19 @@ static NSString *SecretKeyName = @"secret_key";
         self.profile = [[UserProfile alloc]initWithResponse:responseObject];
         success(self.profile);
     } failure:failure];
+}
+
+- (void)getProfile:(NSString *)screenName
+           success:(void (^)(UserProfile* responseObject))success
+           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure {
+    NSDictionary *params = @{@"screen_name" : screenName };
+    [self GET:@"1.1/users/show.json"
+   parameters:params
+      success:^(AFHTTPRequestOperation *operation, id responseObject) {
+          NSLog(@"Fetched user info from network");
+          self.profile = [[UserProfile alloc]initWithResponse:responseObject];
+          success(self.profile);
+      } failure:failure];
 }
 
 - (AFHTTPRequestOperation *)updateStatus:(NSString*)text

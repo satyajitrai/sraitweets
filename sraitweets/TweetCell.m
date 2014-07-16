@@ -12,7 +12,7 @@
 
 @interface TweetCell()
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *retweetContainerHeight;
-@property (weak, nonatomic) IBOutlet UIImageView *userImage;
+@property (weak, nonatomic) IBOutlet UIButton *profileImageButton;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *usernameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
@@ -27,7 +27,7 @@
 
 - (IBAction)onRetweet:(UIButton *)sender;
 - (IBAction)onFavorite:(UIButton *)sender;
-
+- (IBAction)onProfileImageClick:(UIButton *)sender;
 @end
 
 
@@ -48,8 +48,8 @@
     self.usernameLabel.text = [NSString stringWithFormat:@"@%@", tweet.screenName];
     self.msgLable.text = tweet.text;
     self.timeLabel.text = tweet.tweetedAt.shortTimeAgoSinceNow;
-    [self.userImage setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:tweet.profileImageURL]] placeholderImage:[UIImage imageNamed:@"placeholder"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
-        self.userImage.image = image;
+    [self.profileImageButton.imageView setImageWithURLRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:tweet.profileImageURL]] placeholderImage:[UIImage imageNamed:@"default_profile"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {
+        [self.profileImageButton setBackgroundImage:image forState:UIControlStateNormal];
     } failure:^(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error) {
         NSLog(@"Failed to get profile view");
     }];
@@ -104,5 +104,11 @@
     self.tweet.favoriteCount = @(self.tweet.favoriteCount.intValue + 1);
     sender.enabled = NO;
     [self updateFavourites];
+}
+
+- (IBAction)onProfileImageClick:(UIButton *)sender {
+    if (self.profileImageClickHandler) {
+        self.profileImageClickHandler(self.tweet);
+    }
 }
 @end

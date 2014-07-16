@@ -12,6 +12,7 @@
 #import "TweetCell.h"
 #import "TwitterClient.h"
 #import "Tweet.h"
+#import "ProfileViewController.h"
 
 @interface TweetsViewController ()
 
@@ -75,6 +76,9 @@ static NSString * const TweetCellName = @"TweetCell";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TweetCell *cell = [self.tableView dequeueReusableCellWithIdentifier:TweetCellName forIndexPath:indexPath];
     cell.tweet = self.tweets[indexPath.row];
+    cell.profileImageClickHandler = ^(Tweet *tweet) {
+        [self onProfileImageClick:tweet];
+    };
     return cell;
 }
 
@@ -111,7 +115,23 @@ static NSString * const TweetCellName = @"TweetCell";
     }];
 }
 
-- (void) onNewButton {
+- (void) onProfileImageClick:(Tweet*)tweet {
+    if ([tweet.screenName isEqualToString:self.userInfo.screenName]) {
+        ProfileViewController *pvc = [[ProfileViewController alloc] init];
+        pvc.userInfo = self.userInfo;
+        [self.navigationController pushViewController:pvc animated:YES];
+    } else {
+        [[TwitterClient instance] getProfile:tweet.screenName success:^(UserProfile *profile) {
+            ProfileViewController *pvc = [[ProfileViewController alloc] init];
+            pvc.userInfo = profile;
+            [self.navigationController pushViewController:pvc animated:YES];
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            NSLog(@"Failed to get profile for %@", tweet.screenName);
+        }];
+    }
+}
+
+- (void)onNewButton {
     ComposeViewController *cv = [[ComposeViewController alloc] init];
     cv.userInfo = self.userInfo;
     cv.newTweetHandler = ^(Tweet *tweet){

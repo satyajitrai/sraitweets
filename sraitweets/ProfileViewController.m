@@ -38,8 +38,6 @@ static NSString * const TweetCellName = @"HomeTweetCell";
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        NSLog(@"Initializing profile view");
-        [self fetchUserTimeline];
     }
     return self;
 }
@@ -54,10 +52,12 @@ static NSString * const TweetCellName = @"HomeTweetCell";
     self.tableView.dataSource = self;
     self.navigationItem.title = @"Profile";
     
-    UIButton * btn = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 20, 20)];
-    [btn setBackgroundImage:[UIImage imageNamed:@"hamburger"] forState:UIControlStateNormal];
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: btn];
-    self.hamburgerMenu.menuButton = btn;
+    if (self.hamburgerMenu) {
+        UIButton * btn = [[UIButton alloc] initWithFrame: CGRectMake(0, 0, 20, 20)];
+        [btn setBackgroundImage:[UIImage imageNamed:@"hamburger"] forState:UIControlStateNormal];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView: btn];
+        self.hamburgerMenu.menuButton = btn;
+    }
     
     // default values
     self.tweetsLabel.text = @"0";
@@ -74,7 +74,9 @@ static NSString * const TweetCellName = @"HomeTweetCell";
 }
 
 - (void) setUserInfo:(UserProfile *)userInfo {
+    _userInfo = userInfo;
     [self setUpView:userInfo];
+    [self fetchUserTimeline];
 }
 
 -(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
@@ -129,7 +131,7 @@ static NSString * const TweetCellName = @"HomeTweetCell";
 
 #pragma mark - Home Timeline
 - (void) fetchUserTimeline {
-    [[TwitterClient instance] userTimelineWithSuccess:^(NSArray *tweets) {
+    [[TwitterClient instance] userTimelineForUser:self.userInfo.screenName success:^(NSArray *tweets) {
         self.tweets = tweets;
         [self.tableView reloadData];
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

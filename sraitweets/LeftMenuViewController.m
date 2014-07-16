@@ -43,7 +43,6 @@
 }
 
 - (void)setUpView:(UserProfile *)userInfo {
-    NSLog(@"Loading the left nav");
     self.userNameLabel.text = userInfo.name;
     self.screenNameLabel.text = userInfo.screenName;
     [self.profileImage setImageWithURLRequest:[NSURLRequest requestWithURL: userInfo.profileURL] placeholderImage:[UIImage imageNamed:@"placeholder"] success:^(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image) {

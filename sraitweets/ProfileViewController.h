@@ -10,6 +10,9 @@
 #import "HamburgerViewController.h"
 
 @interface ProfileViewController : UIViewController<UITableViewDataSource, UITableViewDelegate, UIGestureRecognizerDelegate>
+
+// If this is set we add hamburger menu - otherwise we will treat the view as a detail view.
 @property (weak, nonatomic) HamburgerViewController *hamburgerMenu;
+
 @property (strong, nonatomic) UserProfile *userInfo;
 @end

@@ -6,8 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
             <connections>
-                <outlet property="followersLabel" destination="e0q-9W-OHe" id="Ktg-WG-eDK"/>
-                <outlet property="followingLabel" destination="IMW-6J-iOM" id="oPf-8G-QyM"/>
+                <outlet property="followersLabel" destination="IMW-6J-iOM" id="x09-Ma-f9d"/>
+                <outlet property="followingLabel" destination="e0q-9W-OHe" id="HKP-Rk-8v4"/>
                 <outlet property="imageContainerHeight" destination="MKv-Bl-46d" id="Uh0-t6-jFZ"/>
                 <outlet property="name" destination="xUA-E8-g7R" id="dEK-AU-dXr"/>
                 <outlet property="profileBackgroundImage" destination="Oqa-QG-Ws1" id="yG4-aR-0Tn"/>

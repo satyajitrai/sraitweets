@@ -23,7 +23,7 @@ static NSString *RetweetedValue = @"1";
 
 + (Tweet *)tweetFromTweet:(NSDictionary*)rawTweet {
     Tweet * tweet = [[Tweet alloc] init];
-    int retweetStatus = [rawTweet[@"retweeted"] integerValue];
+    long retweetStatus = [rawTweet[@"retweeted"] integerValue];
     if (retweetStatus == 1) {
         tweet.retweeted = YES;
         tweet.name = rawTweet[@"retweeted_status"][@"user"][@"name"];

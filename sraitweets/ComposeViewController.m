@@ -88,7 +88,7 @@
 
 - (void)textViewDidChange:(UITextView *)textView
 {
-    self.countButton.title = [NSString stringWithFormat:@"%d", textView.text.length];
+    self.countButton.title = [[NSNumber numberWithInteger:textView.text.length] stringValue];
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
